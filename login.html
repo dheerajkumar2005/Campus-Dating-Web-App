@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            background-image: url("login_background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        form{
+            margin-top: 20%;
+            margin-left: 70%
+            /* text-align: right; */
+            
+        }
+    </style>
+</head>
+<body>
+	<form>
+		<label for="username">Username:</label><br><br>
+		<input type="text" id="username" name="username" required><br><br>
+		<label for="password">Password:</label><br><br>
+		<input type="password" id="password" name="password" required><br><br>
+		<input type="button" value="Login" id="Login_button" onclick="Login()"><br><br>
+		<input type="button" value="Forgot Password" id="Forgot_Password_button" onclick="forgot_password()">
+	</form>
+    <p id="Feedback"></p>
+    <script>
+        let login_credentials;
+        fetch('login.json')
+			.then(response => response.json())
+			.then(data => {
+				// Parse the response into a JavaScript object
+				login_credentials = data;
+                console.log(login_credentials);
+			})
+			.catch(error => console.error('Error fetching JSON data:', error));
+            
+    function Login(){
+        
+        let username_match=-1
+        let input_username = String(document.getElementById("username").value)
+        let input_password = String(document.getElementById("password").value)
+        if (input_username.length===0) {
+            document.getElementById("Feedback").innerHTML = " <span> Username cannot be empty  </span>"
+        }
+        else if (input_password.length===0) {
+            document.getElementById("Feedback").innerHTML = " <span> Password cannot be empty  </span>"
+        }
+        else{
+            if (login_credentials){
+                for (let i = 0; i < login_credentials.length; i++){
+                    if(login_credentials[i].username == input_username) {
+                        username_match=i;
+                    }
+                }
+                if(username_match==-1){
+                    document.getElementById("Feedback").innerHTML = " <span> Username doesn't exists  </span>"
+                    //document.getElementById("username").value = ""
+                    // document.getElementById("password").value = ""
+                }
+                if(username_match!=-1){
+                    if(login_credentials[username_match].password!=input_password){
+                        document.getElementById("Feedback").innerHTML = " <span> Incorrect Password </span> "
+                        // document.getElementById("password").value = ""
+                    }
+                    else{
+                        window.location.href="dating.html"
+                    }
+                }
+
+            
+            }
+        }
+
+
+    }
+    function forgot_password(){
+        window.location.href="forgot.html"
+    }
+
+
+    
+    </script>
+</body>
+
+</html>

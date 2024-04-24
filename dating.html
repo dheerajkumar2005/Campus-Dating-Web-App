@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find Your Match</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1>Find Your Match</h1>
+    <form>
+        <label for="rollNumber">IITB Roll Number:</label><br>
+        <input type="text" id="rollNumber" name="rollNumber" required><br>
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br>
+        <label for="year">Year of Study:</label><br>
+        <input type="text" id="year" name="year" required><br>
+        
+        <label for="age">Age:</label><br>
+        <input type="number" id="age" name="age" required><br>
+        
+        <label for="gender">Gender:</label><br>
+        <label><input type="radio" name="gender" value="Male" required> Male</label>
+        <label><input type="radio" name="gender" value="Female"> Female</label>
+        <label><input type="radio" name="gender" value="Other"> Other</label><br>
+        
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        
+        <label for="interests">Interests:</label><br>
+        <label><input type="checkbox" name="interests" value="Travelling"> Travelling</label>
+        <label><input type="checkbox" name="interests" value="Sports"> Sports</label>
+        <label><input type="checkbox" name="interests" value="Movies"> Movies</label>
+        <label><input type="checkbox" name="interests" value="Music"> Music</label>
+        <label><input type="checkbox" name="interests" value="Literature"> Literature</label>
+        <label><input type="checkbox" name="interests" value="Technology"> Technology</label>
+        <label><input type="checkbox" name="interests" value="Fashion"> Fashion</label>
+        <label><input type="checkbox" name="interests" value="Art"> Art</label><br>
+        <label for="hobbies">Hobbies:</label><br>
+        <label><input type="checkbox" name="hobbies" value="Reading"> Reading</label>
+        <label><input type="checkbox" name="hobbies" value="Cooking"> Cooking</label>
+        <label><input type="checkbox" name="hobbies" value="Coding"> Coding</label>
+        <label><input type="checkbox" name="hobbies" value="Gardening"> Gardening</label>
+        <label><input type="checkbox" name="hobbies" value="Painting"> Painting</label>
+        <label><input type="checkbox" name="hobbies" value="Watching YouTube/Instagram"> Watching YouTube/Instagram</label>
+        <label><input type="checkbox" name="hobbies" value="Playing musical instruments"> Playing musical instruments</label>
+        <label><input type="checkbox" name="hobbies" value="Photography"> Photography</label>
+    </form>
+    <button onclick="findMatch()">Find Match</button>
+    <button onclick="scrollThroughProfiles()">Scroll through profiles</button>
+    <button onclick="logout()">Logout</button>
+    
+</body>

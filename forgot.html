@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forgot Password</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>Forgot Password</h1>
+    <form>
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br>
+        <input type="button" value="Submit" onclick="validate()">
+    </form>
+    <div id="Feedback">
+        <p></p>
+
+    </div>
+    <div id="secretQuestion_div" style="display:none;">
+        <p id="secretQuestion"></p>
+        <input type="text" id="secretAnswer" required>
+        <input type="button" value="Submit" onclick="validateSecretAnswer()">
+        <div>
+            <p id="secret_answer_feedback"></p>
+        </div>
+    </div>
+    <script>
+        let login_credentials;
+        fetch('login.json')
+			.then(response => response.json())
+			.then(data => {
+				// Parse the response into a JavaScript object
+				login_credentials = data;
+                console.log(login_credentials);
+			})
+			.catch(error => console.error('Error fetching JSON data:', error));
+        
+        let username_match=-1
+        
+        function validate(){
+            document.getElementById("secretQuestion_div").style.display="none"
+            let input_username = String(document.getElementById("username").value)
+            username_match=-1
+            if (input_username.length===0) {
+                document.getElementById("Feedback").innerHTML = " <span> Username cannot be empty  </span>"
+            }
+            else{
+                if (login_credentials){
+                    for (let i = 0; i < login_credentials.length; i++){
+                        if(login_credentials[i].username == input_username) {
+                            username_match=i;
+                        }
+                    }
+                    if(username_match==-1){
+                        document.getElementById("Feedback").innerHTML = " <span> Username doesn't exists  </span>"
+                    }
+                    else{
+                        displaySecretQuestion()
+                        
+                    }              
+                }
+            }
+
+            
+
+
+
+        }
+        function displaySecretQuestion() {
+            document.getElementById("secretQuestion_div").style.display = "block";
+            document.getElementById("secretQuestion").innerHTML= login_credentials[username_match].secret_question
+            document.getElementById("secretAnswer").value=""
+            document.getElementById("secret_answer_feedback").innerHTML = ""
+            document.getElementById("Feedback").innerHTML=""
+        }
+        function validateSecretAnswer(){
+            let input_secretanswer=String(document.getElementById("secretAnswer").value)
+
+            if (input_secretanswer.length===0) {
+                document.getElementById("secret_answer_feedback").innerHTML = " <span> Secret Answer cannot be empty  </span>"
+            }
+            else if(input_secretanswer!=login_credentials[username_match].secret_answer){
+                document.getElementById("secret_answer_feedback").innerHTML = " <span> Secret Answer is incorrect  </span>"
+            }
+            else{
+                document.getElementById("secret_answer_feedback").innerHTML = "<span> Correct Password:" + login_credentials[username_match].password + "</span>"
+            }
+        }
+    </script>
+</body>
+</html>

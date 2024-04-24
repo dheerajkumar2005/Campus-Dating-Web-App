@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match Details</title>
+    <script>
+    window.onload=function()
+    {const output = JSON.parse(localStorage.getItem("output"));
+    console.log(output)
+    const div = document.createElement('div')
+    div.innerHTML = `<h1>Match Details</h1>
+    <img src=${output.Photo} alt="Profile Picture">
+    <p><strong>Name:</strong> ${output.Name}</p>
+    <p><strong>IITB Roll Number:</strong> ${output["IITB Roll Number"]}</p>
+    <p><strong>Year of Study:</strong> ${output["Year of Study"]}</p>
+    <p><strong>Age:</strong> ${output.Age}</p>
+    <p><strong>Interests:</strong> ${output.Interests}</p>
+    <p><strong>Gender:</strong> ${output.Gender}</p>
+    <p><strong>Hobbies:</strong> ${output.Hobbies}</p>
+    <p><strong>Email:</strong> ${output.Email}</p>`
+    document.getElementById("main").appendChild(div);
+    }
+    
+    </script>
+</head>
+<body id="main">
+    
+</body>
+</html>
