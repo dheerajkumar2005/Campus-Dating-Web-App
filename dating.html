@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Find Your Match</h1>
-    <form>
+    <form id="Input_Profile">
         <label for="rollNumber">IITB Roll Number:</label><br>
         <input type="text" id="rollNumber" name="rollNumber" required><br>
         <label for="name">Name:</label><br>
@@ -17,10 +17,10 @@
         <input type="text" id="year" name="year" required><br>
         
         <label for="age">Age:</label><br>
-        <input type="number" id="age" name="age" required><br>
+        <input type="number" id="age" name="age" min="16" required><br>
         
         <label for="gender">Gender:</label><br>
-        <label><input type="radio" name="gender" value="Male" required> Male</label>
+        <label><input type="radio" name="gender" value="Male" > Male</label>
         <label><input type="radio" name="gender" value="Female"> Female</label>
         <label><input type="radio" name="gender" value="Other"> Other</label><br>
         
@@ -28,7 +28,7 @@
         <input type="email" id="email" name="email" required><br>
         
         <label for="interests">Interests:</label><br>
-        <label><input type="checkbox" name="interests" value="Travelling"> Travelling</label>
+        <label><input type="checkbox" name="interests" value="Traveling"> Traveling</label>
         <label><input type="checkbox" name="interests" value="Sports"> Sports</label>
         <label><input type="checkbox" name="interests" value="Movies"> Movies</label>
         <label><input type="checkbox" name="interests" value="Music"> Music</label>
@@ -46,7 +46,59 @@
         <label><input type="checkbox" name="hobbies" value="Playing musical instruments"> Playing musical instruments</label>
         <label><input type="checkbox" name="hobbies" value="Photography"> Photography</label>
     </form>
-    <button onclick="findMatch()">Find Match</button>
+    
+    <button onclick="findMatch()">Find Match</button><br><br>
+    
+    <button onclick="showFilters()">Filters</button>
+    <div id="filters" style="display:none;">
+        <!-- Filters go here -->
+        <form id="Input_filters">
+            <label for="gender">Gender:</label><br>
+            <label><input type="checkbox" name="fgender" value="Male"> Male</label>
+            <label><input type="checkbox" name="fgender" value="Female"> Female</label>
+            <label><input type="checkbox" name="fgender" value="Other"> Other</label><br>
+            
+            <label for="age">Age:</label><br>
+            <label for="minAge">Min:</label>
+            <input type="number" id="minAge" name="minAge" min="16">
+            <label for="maxAge">Max:</label>
+            <input type="number" id="maxAge" name="maxAge" min="16"><br>
+            
+            <label for="interests">Interests:</label><br>
+            <label><input type="checkbox" name="finterests" value="Traveling"> Traveling</label>
+            <label><input type="checkbox" name="finterests" value="Sports"> Sports</label>
+            <label><input type="checkbox" name="finterests" value="Movies"> Movies</label>
+            <label><input type="checkbox" name="finterests" value="Music"> Music</label>
+            <label><input type="checkbox" name="finterests" value="Literature"> Literature</label>
+            <label><input type="checkbox" name="finterests" value="Technology"> Technology</label>
+            <label><input type="checkbox" name="finterests" value="Fashion"> Fashion</label>
+            <label><input type="checkbox" name="finterests" value="Art"> Art</label><br>
+            
+            <label for="hobbies">Hobbies:</label><br>
+            <label><input type="checkbox" name="fhobbies" value="Reading"> Reading</label>
+            <label><input type="checkbox" name="fhobbies" value="Cooking"> Cooking</label>
+            <label><input type="checkbox" name="fhobbies" value="Coding"> Coding</label>
+            <label><input type="checkbox" name="fhobbies" value="Gardening"> Gardening</label>
+            <label><input type="checkbox" name="fhobbies" value="Painting"> Painting</label>
+            <label><input type="checkbox" name="fhobbies" value="Watching YouTube/Instagram"> Watching YouTube/Instagram</label>
+            <label><input type="checkbox" name="fhobbies" value="Playing musical instruments"> Playing musical instruments</label>
+            <label><input type="checkbox" name="fhobbies" value="Photography"> Photography</label>
+            </div> 
+        </form>
+    </div>
+    <button onclick="showSearchCriteria()">Own Search Criteria</button><br><br>
+    <div id="searchCriteria" style="display:none;">
+        <!-- Search criteria go here -->
+        <form id="Input_search">
+            
+            <label><input type="radio" id="maxInterests" name="search" value="Maximum match in Interests">Maximum match in Interests</label><br>
+
+            <label><input type="radio" id="maxHobbies" name="search" value="Maximum match in Hobbies">Maximum match in Hobbies</label><br>
+
+            
+            <label><input type="radio" id="maxInterestsHobbies" name="search" value="Maximum match in Interests+Hobbies" >Maximum match in Interests+Hobbies</label><br><br>
+        </form>
+    </div>
     <button onclick="scrollThroughProfiles()">Scroll through profiles</button>
     <button onclick="logout()">Logout</button>
     

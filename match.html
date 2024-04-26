@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Match Details</title>
     <script>
-    window.onload=function()
-    {const output = JSON.parse(localStorage.getItem("output"));
+    window.onload=function(){
+    const output = JSON.parse(localStorage.getItem("output"));
     console.log(output)
+    if (output!=null){
     const div = document.createElement('div')
     div.innerHTML = `<h1>Match Details</h1>
     <img src=${output.Photo} alt="Profile Picture">
@@ -21,6 +22,7 @@
     <p><strong>Email:</strong> ${output.Email}</p>`
     document.getElementById("main").appendChild(div);
     }
+}
     
     </script>
 </head>
