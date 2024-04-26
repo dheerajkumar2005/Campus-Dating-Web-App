@@ -26,6 +26,7 @@
 		<input type="password" id="password" name="password" required><br><br>
 		<input type="button" value="Login" id="Login_button" onclick="Login()"><br><br>
 		<input type="button" value="Forgot Password" id="Forgot_Password_button" onclick="forgot_password()">
+        <input type="button" value="Register" id="Register_button" onclick="register()">
 	</form>
     <p id="Feedback"></p>
     <script>
@@ -80,6 +81,9 @@
     }
     function forgot_password(){
         window.location.href="forgot.html"
+    }
+    function register(){
+        window.location.href="register.html"
     }
 
 
